@@ -53,4 +53,14 @@ public class StudentController {
         studentrepo.save(student);
         return student;
     }
+
+    //Delete Student//
+    @DeleteMapping("/students/delete/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable int id)
+    {
+        Student student=studentrepo.findById(id).get();
+        studentrepo.delete(student);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deleted Successfully");
+
+    }
 }
