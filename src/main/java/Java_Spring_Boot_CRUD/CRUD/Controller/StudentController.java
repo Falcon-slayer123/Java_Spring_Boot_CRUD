@@ -41,4 +41,16 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Student created successfully");
     }
+
+    //Update Student//
+    @PutMapping("/students/update/{id}")
+    public Student updateStudent(@PathVariable int id)
+    {
+        Student student=studentrepo.findById(id).get();
+        student.setName("Shraddha");
+        student.setBranch("ARTS");
+        student.setPercentage("78");
+        studentrepo.save(student);
+        return student;
+    }
 }
